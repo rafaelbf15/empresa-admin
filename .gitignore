@@ -1,0 +1,21 @@
+# Ignorar arquivos e pastas do Next.js na pasta empresa-admin-ui
+/empresa-admin-ui/.next/
+/empresa-admin-ui/node_modules/
+/empresa-admin-ui/.env
+/empresa-admin-ui/out/
+
+# Ignorar arquivos e pastas do .NET na pasta empresa-admin-api
+/empresa-admin-api/bin/
+/empresa-admin-api/obj/
+/empresa-admin-api/tests/
+/empresa-admin-api/**/*.dll
+/empresa-admin-api/**/*.exe
+/empresa-admin-api/**/*.pdb
+/empresa-admin-api/**/*.cache
+/empresa-admin-api/**/*.log
+/empresa-admin-api/*.db
+/empresa-admin-api/*.suo
+/empresa-admin-api/*.user
+/empresa-admin-api/*.vscode
+/empresa-admin-api/*.vs
+/empresa-admin-api/appsettings*.json

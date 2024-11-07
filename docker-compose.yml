@@ -1,0 +1,46 @@
+networks:
+  default:
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: K86l0QK9EltKIjZ
+      MYSQL_DATABASE: VendasDb
+    ports:
+      - "3306:3306"
+      - "33060:33060"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  empresa-admin-api:
+    container_name: empresa-admin-api
+    build:
+      context: ./EmpresaAdminAPI/
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    ports:
+      - "5082:8080"
+      - "7048:8081"
+    depends_on:
+      - mysql
+    command: sh -c "echo 'Waiting for MySQL to be ready...' && sleep 10 && dotnet EmpresaAdmin.API.dll"
+    networks:
+      - default
+
+  empresa-admin-ui:
+    container_name: empresa-admin-ui
+    build:
+      context: ./empresa-admin-ui/
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - empresa-admin-api
+    networks:
+      - default
+
+volumes:
+  mysql_data:
