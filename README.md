@@ -29,6 +29,12 @@ Antes de começar, certifique-se de ter as seguintes ferramentas instaladas:
 
 ---
 
+## Collection Postman
+
+- https://www.postman.com/aerospace-physicist-73540973/projetos/collection/b7fmxrl/projeto-empresaadmin?action=share&creator=23053555
+
+--- 
+
 ## Configuração de Variáveis de Ambiente
 
 Crie um arquivo `.env` na raiz do projeto empresa-admin-ui com o seguinte conteúdo:
