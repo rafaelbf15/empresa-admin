@@ -17,7 +17,7 @@ services:
   empresa-admin-api:
     container_name: empresa-admin-api
     build:
-      context: ./EmpresaAdminAPI/
+      context: ./empresa-admin-api/
       dockerfile: Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
