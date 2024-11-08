@@ -7,13 +7,9 @@ using EmpresaAdmin.API.Configuration;
 using EmpresaAdmin.Infra.Context;
 using Microsoft.EntityFrameworkCore;
 using EmpresaAdmin.API.Data;
+using EmpresaAdmin.API.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
-
-Log.Logger = new LoggerConfiguration()
-    .WriteTo.Console()
-    .WriteTo.File("logs/empresa-admin.txt", rollingInterval: RollingInterval.Day)
-    .CreateLogger();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

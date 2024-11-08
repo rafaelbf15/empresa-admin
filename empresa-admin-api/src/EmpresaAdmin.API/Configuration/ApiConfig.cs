@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text.Json.Serialization;
 using EmpresaAdmin.Infra.Context;
+using EmpresaAdmin.API.Middleware;
 
 namespace EmpresaAdmin.API.Configuration
 {
@@ -58,6 +59,10 @@ namespace EmpresaAdmin.API.Configuration
 
             services.AddEndpointsApiExplorer();
 
+            services.AddExceptionHandler<ErrorHandlingMiddleware>();
+
+            services.AddProblemDetails();
+
             services.AddDirectoryBrowser();
 
             services.Configure<ApiBehaviorOptions>(options =>
@@ -68,7 +73,6 @@ namespace EmpresaAdmin.API.Configuration
             services.AddCors(options => options.AddPolicy("AllowAll", p => p.AllowAnyOrigin()
                                                                               .AllowAnyMethod()
                                                                               .AllowAnyHeader()));
-            services.AddSignalR();
         }
 
         public static void UseApiConfiguration(this IApplicationBuilder app, IWebHostEnvironment env, ConfigurationManager configuration)
@@ -88,6 +92,8 @@ namespace EmpresaAdmin.API.Configuration
             app.UseDefaultFiles();
 
             app.UseStaticFiles();
+
+            app.UseExceptionHandler(opt => { });
 
             app.UseAuthentication();
 
